@@ -1,8 +1,8 @@
 import os
 
 # APPLICATION IDENTIFY
-_APPLICATION = 'Auth BDC'
-_DESCRIPTION = 'Auth - Backend Deverloper Challenge'
+_APPLICATION = 'AuthFJAM'
+_DESCRIPTION = 'Auth - FastAPI JWT Authentication Module'
 _SWVERSION = '0.0.0'
 
 #---------------------------------------------------#

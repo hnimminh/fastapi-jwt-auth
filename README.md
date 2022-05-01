@@ -1,5 +1,5 @@
 
-# AUTH MODULE - BACKEND DEVELOPER CHALLENGE
+# AUTH - FastAPI JWT Authentication Module
 
 ## Requirements
 ```
