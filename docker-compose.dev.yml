@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  mysqlsdb:
+    container_name: ebdc-mysqldb
+    platform: linux/amd64
+    image: mysql
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=Concobebe2022
+      - MYSQL_DATABASE=authdb
+
+  authapi:
+    container_name: ebdc-authapi
+    platform: linux/amd64
+    build:
+      context: .
+    restart: always
+    depends_on:
+      - mysqlsdb
+    command: ["/usr/bin/wait-for-it", "mysqlsdb:3306", "-t", "60", "-s", "--", "./main.py"]
+    ports:
+      - 80:80
+    environment:
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=Concobebe2022
+      - MYSQL_DB=authdb
+      - MYSQL_HOST=mysqlsdb
+      - MYSQL_PORT=3306
+      - SECRET_KEY=TheDefaultSecretKeyWithNoContent
+      - LOGLEVEL=DEBUG
